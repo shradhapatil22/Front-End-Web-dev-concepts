@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <img  class="bg" src="bg.jpg" alt="">
+    <div class="container">
+        <h1>Travel Form</h1>
+        <p>Enter your details and submit this form to confirm your participation in the trip</p>
+        
+        <form action="Validation.php" name="ValidForm" onsubmit="return ValidateForm()" method="POST">
+            <input type="text" name="Name" id="Name" placeholder="Enter your name"><span class="FormError"><b>  *Enter valid names</b></span>
+            
+            <input type="text" name="Age" id="Age" placeholder="Enter your age"><span class="FormError"><b>*Age should be above 14</b></span>
+            
+            <input type="text" name="Gender" id="Gender" placeholder="Enter your gender"><span class="FormError"><b>*Mandatory Field</b></span>
+            
+            <input type="email" name="Email" id="Email" placeholder="Enter your email" >
+            
+            <input type="phone" name="Phone" id="Phone" placeholder="Enter your phone"><span class="FormError"><b>*Enter numeric phone number</b></span>
+
+            <input type="password" name="password" id="password" placeholder="Enter password"><span class="FormError"><b>*password must be 8 characters long</b></span>
+
+            <input type="password" name="password" id="Cpassword" placeholder="Confirm password"><span class="FormError"><b>* both passwords should match </b></span>
+            
+            <textarea name="Description" id="Description" cols="30" rows="10" placeholder="Enter your description"></textarea>
+            <button class="btn" type="submit" name="submit">submit</button>
+
+        </form>
+            
+    </div>
+    
+
+    
+</body>
+<script>
+    function setError(id,error) {
+    // sets error inside tag of id
+        element=getElementById(id);
+        element.getElementsByClassName('FormError')[0].innerHTML=error;
+    }
+    
+    function ValidateForm(){
+        var returnval=true;
+        var name=document.forms['ValidForm']['Name'].value;
+        if(name.length<5){
+            setError("Name", " Length of name too short");
+        }
+        console.log(name);
+    
+    
+    
+        return returnval;
+    }
+    </script>
+</html>
